@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :users, only: [:create] do
         resources :participants, only: [:index]
       end
+      post '/login', to: 'login#login'
     end
   end
 end

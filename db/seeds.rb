@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+Participant.delete_all
 User.delete_all
 Event.delete_all
 Item.delete_all
@@ -50,8 +52,8 @@ Participant.create([
     {event_id: Event.first.id, user_id: User.first.id, is_creator: true},
     {event_id: Event.first.id, user_id: User.second.id},
     {event_id: Event.first.id, user_id: User.last.id},
-    {event_id: Event.second.id, user_id: User.second.id, is_creator: true},
-    {event_id: Event.last.id, user_id: User.last.id, is_creator: true}
+    {event_id: Event.second.id, user_id: User.first.id, is_creator: true},
+    {event_id: Event.last.id, user_id: User.first.id}
 ])
 
 puts 'Finished'

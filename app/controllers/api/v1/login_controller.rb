@@ -1,6 +1,6 @@
 class Api::V1::LoginController < Api::V1::BaseController
-    skip_before_action :verify_authenticity_token, only: [:create]
-    before_action :set_user, only:[:show, :update]
+    skip_before_action :verify_authenticity_token, only: [:create, :update]
+    before_action :set_user, only:[:update]
     URL = "https://api.weixin.qq.com/sns/jscode2session".freeze
 
     def wechat_user
@@ -15,9 +15,9 @@ class Api::V1::LoginController < Api::V1::BaseController
         @wechat_user ||= JSON.parse(@wechat_response.body)
     end
 
-    def show
-        render json: { user: @user }
-    end
+    # def show
+    #    render json: { user: @user }
+    # end
 
     def create
         @user = User.find_or_create_by(open_id: wechat_user.fetch("openid"))
@@ -42,6 +42,6 @@ class Api::V1::LoginController < Api::V1::BaseController
     end
 
     def user_params
-        params.require(:user).permit(:nickname, :avatar)
+        params.require(:user).permit(:nickname, :open_id, :avatar)
     end
 end

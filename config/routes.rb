@@ -8,6 +8,9 @@ Rails.application.routes.draw do
         resources :participants, only: [:index]
       end
       post '/login', to: 'login#create'
+      # get '/login/:id', to: 'login#show'
+      put '/login/:id', to: 'login#update'
+      patch '/login/:id', to: 'login#update'
     end
   end
 end

@@ -8,7 +8,7 @@ class Api::V1::ParticipantsController < Api::V1::BaseController
   
   private
   
-  # def find_participant
+  # def set_participant
   #  @participant = Participant.find(params[:id])
   # end
 

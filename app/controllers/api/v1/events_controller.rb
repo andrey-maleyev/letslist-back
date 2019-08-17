@@ -1,5 +1,5 @@
 class Api::V1::EventsController < Api::V1::BaseController
-  skip_before_action :verify_authenticity_token, only: [:create]
+  skip_before_action :verify_authenticity_token, only: [:create, :create_event_item]
   
   def index
     @events = Event.all
@@ -16,6 +16,12 @@ class Api::V1::EventsController < Api::V1::BaseController
     @participant.save
   end
   
+  def create_event_item
+    @event = Event.find(params[:event_id])
+    @item = Item.find(params[:id])
+    @event.items << @item
+  end
+
   private
 
   def event_params

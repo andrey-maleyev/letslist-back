@@ -1,5 +1,6 @@
 class Api::V1::EventsController < Api::V1::BaseController
   skip_before_action :verify_authenticity_token, only: [:create, :create_event_item]
+  before_action :set_event, only:[:show]
   
   def index
     @events = Event.all
@@ -15,6 +16,10 @@ class Api::V1::EventsController < Api::V1::BaseController
     @participant.is_creator = true
     @participant.save
   end
+
+  def show
+
+  end
   
   def create_event_item
     @event = Event.find(params[:event_id])
@@ -23,6 +28,10 @@ class Api::V1::EventsController < Api::V1::BaseController
   end
 
   private
+
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
   def event_params
     params.require(:event).permit(:name, :date)

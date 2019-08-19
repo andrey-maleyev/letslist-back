@@ -18,13 +18,13 @@ json.event do
     end
     json.taken_items @event.events_items do |event_item|
         if event_item.is_taken?
-            json.id event_item.id
+            json.id event_item.item.id
             json.name event_item.item.name
         end
     end
     json.not_taken_items @event.events_items do |event_item|
         unless event_item.is_taken?
-            json.id event_item.id
+            json.id event_item.item.id
             json.name event_item.item.name
         end
     end

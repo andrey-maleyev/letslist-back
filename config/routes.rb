@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :events, only: [:index, :create, :show]
       resources :items, only: [:index]
+      resources :participants, only: [:create]
       resources :users, only: [:create] do
         resources :participants, only: [:index]
       end

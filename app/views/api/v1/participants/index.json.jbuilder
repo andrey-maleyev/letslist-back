@@ -3,6 +3,7 @@ json.participants do
       json.extract! participant, :id, :is_creator
       json.event participant.event.name
       json.event_id participant.event.id
-      json.date participant.event.date.strftime('%A, %d %b %Y %l:%M %p')
+      json.date participant.event.date.strftime('%A, %d %b %Y %l:%M %p') unless participant.event.date.nil?
+      end
     end
 end

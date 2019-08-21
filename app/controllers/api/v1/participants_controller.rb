@@ -1,6 +1,7 @@
 class Api::V1::ParticipantsController < Api::V1::BaseController
-  skip_before_action :verify_authenticity_token, only: [:create, :create_participant_event_item, :delete_participant_event_item]
+  skip_before_action :verify_authenticity_token, only: [:create, :update, :create_participant_event_item, :delete_participant_event_item]
   before_action :set_user, only: [:index]
+  before_action :set_participant_short_params, only: [:update]
   before_action :set_participant, :set_events_item, only: [:create_participant_event_item, :delete_participant_event_item]
 
   def index
@@ -15,6 +16,10 @@ class Api::V1::ParticipantsController < Api::V1::BaseController
     @participant.event = @event
     @participant.is_creator = false
     @participant.save
+  end
+
+  def update
+    @participant.update(participant_params)
   end
 
   def create_participant_event_item
@@ -35,6 +40,10 @@ class Api::V1::ParticipantsController < Api::V1::BaseController
    @participant = Participant.find(params[:participant_id])
   end
 
+  def set_participant_short_params
+    @participant = Participant.find(params[:id])
+  end
+
   def set_events_item
     @events_item = EventsItem.find(params[:id])
   end
@@ -49,5 +58,9 @@ class Api::V1::ParticipantsController < Api::V1::BaseController
 
   def user_params
     params.require(:participant).permit(:user_id)
+  end
+
+  def participant_params
+    params.require(:participant).permit(:expenses)
   end
 end

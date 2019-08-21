@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       patch '/login/:id', to: 'login#update'
       post '/events/:event_id/items/:id', to: 'events#create_event_item'
       post '/participants/:participant_id/eventsitems/:id', to: 'participants#create_participant_event_item'
+      delete '/participants/:participant_id/eventsitems/:id', to: 'participants#delete_participant_event_item'
     end
   end
 end

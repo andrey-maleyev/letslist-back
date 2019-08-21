@@ -4,10 +4,15 @@ json.event do
     json.is_completed @participant.event.is_completed
     json.date @participant.event.date.strftime('%A, %d %b %Y %l:%M %p') unless @participant.event.date.nil?
     json.participants_count @participant.event.participants.count
+    json.expenses @participant.event.participants do |participant|
+        json.user_id participant.user.id
+        json.participant_id participant.id
+        json.expenses participant.expenses
+    end
     json.creator @participant.event.participants do |participant|
         if participant.is_creator?
             json.nickname participant.user.nickname
-            json.extract! participant, :id, :expenses
+            json.participant_id participant.id
             json.user_id participant.user.id
             json.avatar participant.user.avatar
             json.personal_list participant.events_items do |taken_item|
@@ -21,7 +26,7 @@ json.event do
     json.guests @participant.event.participants do |participant|
         unless participant.is_creator?
             json.nickname participant.user.nickname
-            json.extract! participant, :id, :expenses
+            json.participant_id participant.id
             json.user_id participant.user.id
             json.avatar participant.user.avatar
             json.personal_list participant.events_items do |taken_item|

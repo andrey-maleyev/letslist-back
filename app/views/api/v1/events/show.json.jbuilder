@@ -1,6 +1,6 @@
 json.event do
     json.extract! @event, :id, :name, :is_completed
-    json.date @event.date.strftime('%A, %d %b %Y %l:%M %p')
+    json.date @event.date.strftime('%A, %d %b %Y %l:%M %p') unless @event.date.nil?
     json.participants_count @event.participants.count
     json.creator @event.participants do |participant|
         if participant.is_creator?

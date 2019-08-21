@@ -1,7 +1,8 @@
 class Api::V1::ParticipantsController < Api::V1::BaseController
-  skip_before_action :verify_authenticity_token, only: [:create]
+  skip_before_action :verify_authenticity_token, only: [:create, :create_participant_event_item]
   before_action :set_user, only: [:index]
-  
+  before_action :set_participant, :set_events_item, only: [:create_participant_event_item]
+
   def index
     @participants = Participant.where(user_id: @user)
   end
@@ -15,12 +16,20 @@ class Api::V1::ParticipantsController < Api::V1::BaseController
     @participant.is_creator = false
     @participant.save
   end
-  
+
+  def create_participant_event_item
+    @participant.events_items << @events_item
+  end
+
   private
-  
-  # def set_participant
-  #  @participant = Participant.find(params[:id])
-  # end
+
+  def set_participant
+   @participant = Participant.find(params[:participant_id])
+  end
+
+  def set_events_item
+    @events_item = EventsItem.find(params[:id])
+  end
 
   def set_user
     @user = User.find(params[:user_id])

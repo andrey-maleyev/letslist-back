@@ -15,6 +15,7 @@ json.event do
             json.participant_id participant.id
             json.user_id participant.user.id
             json.avatar participant.user.avatar
+            json.expenses participant.expenses
             json.personal_list participant.events_items do |taken_item|
                 json.events_item_id taken_item.id
                 json.item_id taken_item.item_id
@@ -29,6 +30,7 @@ json.event do
             json.participant_id participant.id
             json.user_id participant.user.id
             json.avatar participant.user.avatar
+            json.expenses participant.expenses
             json.personal_list participant.events_items do |taken_item|
                 json.events_item_id taken_item.id
                 json.item_id taken_item.item_id

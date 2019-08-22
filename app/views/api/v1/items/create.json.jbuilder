@@ -1,0 +1,1 @@
+json.extract! @item, :id, :name, :is_default

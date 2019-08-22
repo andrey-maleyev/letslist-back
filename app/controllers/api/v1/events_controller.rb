@@ -35,7 +35,6 @@ class Api::V1::EventsController < Api::V1::BaseController
 
   def event_params
     params.require(:event).permit(:name, :date)
-    # params.require(:event).permit(:name, :date)
   end
 
   def user_params

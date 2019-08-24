@@ -7,11 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-EventsItem.delete_all
-Participant.delete_all
-User.delete_all
-Event.delete_all
-Item.delete_all
+# EventsItem.delete_all
+# Participant.delete_all
+# User.delete_all
+# Event.delete_all
+# Item.delete_all
 
 # puts 'Creating users...'
 # User.create([
@@ -31,29 +31,11 @@ Item.delete_all
 
 puts 'Creating items...'
 Item.create([
-    {name: "Water", is_default: true},
-    {name: "Milk", is_default: true},
-    {name: "Coke", is_default: true},
-    {name: "Juice", is_default: true},
-    {name: "Tea", is_default: true},
-    {name: "Coffee", is_default: true},
-    {name: "Beer", is_default: true},
-    {name: "Cake", is_default: true},
-    {name: "Cookies", is_default: true},
-    {name: "Sandwiches", is_default: true},
-    {name: "Hamburgers", is_default: true},
-    {name: "Pizza", is_default: true},
-    {name: "Snacks", is_default: true},
-    {name: "Chips", is_default: true},
-    {name: "Chocolate", is_default: true},
-    {name: "Paper", is_default: true},
-    {name: "Pens", is_default: true},
-    {name: "Projector", is_default: true},
-    {name: "iPhone charger", is_default: true},
-    {name: "Disposable plates", is_default: true},
-    {name: "Disposable cups", is_default: true},
-    {name: "Disposable forks", is_default: true},
-    {name: "Candles", is_default: true}
+    {name: "Seafood", is_default: true},
+    {name: "Meat", is_default: true},
+    {name: "Salt", is_default: true},
+    {name: "Pepper", is_default: true},
+    {name: "Curry", is_default: true}
 ])
 
 # puts 'Creating participants...'
